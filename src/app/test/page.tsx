@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-export const Test = () => {
+export const Test: any = () => {
   const router = useRouter();
   return (
     <div>
