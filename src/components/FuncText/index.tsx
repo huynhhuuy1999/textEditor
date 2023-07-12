@@ -1,29 +1,32 @@
 // Library
 import { Checkbox } from "antd";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { RxLetterCaseUppercase } from "react-icons/rx";
 
 // Styles
-import globalStyles from "@/app/global.module.css";
 import styles from "./styles.module.css";
+import { NextPage } from "next";
+import { CheckboxValueType } from "antd/es/checkbox/Group";
 
 //Constant
 
 interface OptionCheckbox {
   label: ReactNode;
-  value: string;
+  value: string | Object;
 }
 
-export const FuncText = () => {
+interface IFuncText {
+  onChangeFunc: (value: CheckboxValueType[]) => void;
+}
+
+export const FuncText: React.FC<IFuncText> = ({ onChangeFunc }) => {
   const options: OptionCheckbox[] = [
-    { label: <RxLetterCaseUppercase />, value: globalStyles.uppercase },
-    { label: "Pear", value: "Pear" },
-    { label: "Orange", value: "Orange" },
+    { label: <RxLetterCaseUppercase />, value: { textTransform: "uppercase" } },
   ];
   return (
     <div className={styles.container}>
-      <span className={styles.title}>Func text</span>
-      <Checkbox.Group onChange={(e) => console.log(e)}>
+      <span className={styles.title}>Func textsdf</span>
+      <Checkbox.Group onChange={onChangeFunc}>
         {options.map((option, index) => {
           return (
             <Checkbox value={option.value} key={index}>
