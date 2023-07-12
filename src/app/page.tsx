@@ -1,15 +1,17 @@
 "use client";
 import { EditorText, FuncText } from "@/components";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import Link from "next/link";
-// import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <span>
-      <EditorText />
-      <FuncText />
+    <div>
+      <Logo />
+      <div>
+        <EditorText />
+        <FuncText />
+      </div>
       <Link href={"test"}>Click to test page</Link>
-    </span>
+    </div>
   );
 }
