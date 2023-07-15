@@ -1,14 +1,16 @@
 "use client";
 import { EditorText, FuncText } from "@/components";
 import Logo from "@/components/Logo";
-import { CheckboxValueType } from "antd/es/checkbox/Group";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [stylesCustom, setStyleCustom] = useState({});
-  const convertStyleCustom = (value: CheckboxValueType[]) => {
-    const styles = Object.assign({}, value) ? Object.assign({}, value)[0] : {};
+  const convertStyleCustom = (value: any[]) => {
+    console.log("value", value);
+    const styles = value.reduce((accumulator, currentValue) => {
+      return { ...accumulator, ...currentValue };
+    }, {});
 
     setStyleCustom(styles);
   };

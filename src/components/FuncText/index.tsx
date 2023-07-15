@@ -2,6 +2,7 @@
 import { Checkbox } from "antd";
 import React, { ReactNode } from "react";
 import { RxLetterCaseUppercase } from "react-icons/rx";
+import { BiBold } from "react-icons/bi";
 
 // Styles
 import styles from "./styles.module.css";
@@ -18,11 +19,11 @@ interface OptionCheckbox {
 interface IFuncText {
   onChangeFunc: (value: CheckboxValueType[]) => void;
 }
-
+const options: OptionCheckbox[] = [
+  { label: <RxLetterCaseUppercase />, value: { textTransform: "uppercase" } },
+  { label: <BiBold />, value: { fontWeight: "bold" } },
+];
 export const FuncText: React.FC<IFuncText> = ({ onChangeFunc }) => {
-  const options: OptionCheckbox[] = [
-    { label: <RxLetterCaseUppercase />, value: { textTransform: "uppercase" } },
-  ];
   return (
     <div className={styles.container}>
       <span className={styles.title}>Func textsdf</span>
