@@ -7,7 +7,6 @@ import { useState } from "react";
 export default function Home() {
   const [stylesCustom, setStyleCustom] = useState({});
   const convertStyleCustom = (value: any[]) => {
-    console.log("value", value);
     const styles = value.reduce((accumulator, currentValue) => {
       return { ...accumulator, ...currentValue };
     }, {});
