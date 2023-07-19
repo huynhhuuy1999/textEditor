@@ -2,10 +2,11 @@
 import { EditorText, FuncText } from "@/components";
 import Logo from "@/components/Logo";
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export default function Home() {
   const [stylesCustom, setStyleCustom] = useState({});
+
   const convertStyleCustom = (value: any[]) => {
     const styles = value.reduce((accumulator, currentValue) => {
       return { ...accumulator, ...currentValue };

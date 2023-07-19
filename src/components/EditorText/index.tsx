@@ -1,5 +1,6 @@
 import { Input } from "antd";
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
+import { AiFillCopy } from "react-icons/ai";
 import styles from "./styles.module.css";
 
 interface IEditorText {
@@ -9,9 +10,10 @@ interface IEditorText {
 export const EditorText: React.FC<IEditorText> = ({ styleCustom }) => {
   const { TextArea } = Input;
   const [text, setText] = useState("");
+  const idText = useId();
 
   const onCopy = () => {
-    var copyText: any = document.getElementById("hihi");
+    var copyText: any = document.getElementById(idText);
     if (copyText) {
       copyText.select();
       copyText.setSelectionRange(0, 99999); // For mobile devices
@@ -20,7 +22,7 @@ export const EditorText: React.FC<IEditorText> = ({ styleCustom }) => {
       navigator.clipboard.writeText(copyText.value);
 
       // Alert the copied text
-      alert("Copied the text: " + copyText.value);
+      // alert("Copied the text: " + copyText.value);
     }
   };
   return (
@@ -30,9 +32,11 @@ export const EditorText: React.FC<IEditorText> = ({ styleCustom }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         style={styleCustom}
-        id="hihi"
+        id={idText}
       />
-      <button onClick={onCopy}>hihi</button>
+      <div className={styles.iconCopy}>
+        <AiFillCopy onClick={onCopy} />
+      </div>
     </div>
   );
 };
