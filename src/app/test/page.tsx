@@ -1,11 +1,35 @@
 "use client";
-import { useRouter } from "next/navigation";
+// Library
+import { useRef } from "react";
+// Components
+import VideoCom from "@/components/VideoCom";
+import { Button } from "antd";
+
+interface ITypeVideo {
+  play: () => void;
+  pause: () => void;
+}
 
 export const Test: any = () => {
-  const router = useRouter();
+  const refVideo = useRef<ITypeVideo>();
+
+  const onPlay = () => {
+    refVideo.current && refVideo.current.play();
+  };
+
+  const onPause = () => {
+    refVideo.current && refVideo.current.pause();
+  };
+
   return (
     <div>
-      atest <button onClick={() => router.back()}>go back</button>
+      <VideoCom ref={refVideo} />
+      <Button type="primary" onClick={onPlay}>
+        Play
+      </Button>
+      <Button danger onClick={onPause}>
+        Pause
+      </Button>
     </div>
   );
 };
