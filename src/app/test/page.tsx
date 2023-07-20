@@ -1,9 +1,11 @@
 "use client";
 // Library
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 // Components
 import VideoCom from "@/components/VideoCom";
 import { Button } from "antd";
+// Styles
+import styles from "./styles.module.css";
 
 interface ITypeVideo {
   play: () => void;
@@ -11,7 +13,12 @@ interface ITypeVideo {
 }
 
 export const Test: any = () => {
+  const [num, setNum] = useState<number>(0);
   const refVideo = useRef<ITypeVideo>();
+
+  useLayoutEffect(() => {
+    if (num > 3) setNum(0);
+  }, [num]);
 
   const onPlay = () => {
     refVideo.current && refVideo.current.play();
@@ -19,6 +26,10 @@ export const Test: any = () => {
 
   const onPause = () => {
     refVideo.current && refVideo.current.pause();
+  };
+
+  const increaseNumber = () => {
+    setNum(num + 1);
   };
 
   return (
@@ -30,6 +41,8 @@ export const Test: any = () => {
       <Button danger onClick={onPause}>
         Pause
       </Button>
+      <div className={styles.textNum}>{num}</div>
+      <Button onClick={increaseNumber}>Click</Button>
     </div>
   );
 };
