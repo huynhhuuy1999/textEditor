@@ -1,0 +1,10 @@
+services:
+  app:
+    container_name: text
+    image: node:18-alpine
+    command: sh -c "yarn install && yarn run dev"
+    volumes:
+      - ./:/app
+    ports:
+      - '3001:3000'
+    working_dir: /app
